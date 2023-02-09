@@ -1,0 +1,31 @@
+<%- include('header'); -%>
+
+
+    <div class="box" id="heading">
+        <h1 style="color:pink">
+            <%= ejsListName %>
+        </h1>
+
+        <div class="box">
+            <% ejsListItems.forEach(function(item) { %>
+            <form  class="delete" action="/<%= ejsListName %>/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value=<%= item.id %> onChange="this.form.submit()">
+                    <p>
+                        <%= item.content %>
+                    </p>
+                </div>
+            </form>
+                <% }) %>
+
+
+                    <form class="item" action="/<%= ejsListName %>" method="post">
+                        <label for="fname">Your deed:</label>
+                        <input type="text" name="newItem" autocomplete="off">
+                        <button type="submit">+</button>
+                    </form>
+
+        </div>
+    </div>
+
+    <%- include('footer'); -%>
